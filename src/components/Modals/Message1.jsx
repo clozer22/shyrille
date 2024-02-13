@@ -11,9 +11,10 @@ const Message1 = () => {
   const handleNext = () => {
     if (index < message_data.length - 1) {
       setIndex(index + 1);
-    } else {
+      
+    } else{
       setIsExploding(true);
-      setTimeout(() => setIsExploding(false), 20000);
+      setTimeout(() => setIsExploding(false), 30000);
     }
 
   };
@@ -56,9 +57,9 @@ const Message1 = () => {
               <button
                 type="button"
                 onClick={handleNext}
-                className="inline-flex mb-2 w-full justify-center rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm sm:ml-3 sm:w-auto"
+                className="inline-flex mb-2 w-full justify-center rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm sm:ml-3 sm:w-auto whitespace-nowrap"
               >
-                Next
+               {index === message_data.length - 1 ? 'Double Tap' : 'Next'}
               </button>
               <button
                 type="button"
