@@ -15,7 +15,7 @@ const Index = () => {
 
     const handleAudioEnded = () => {
         // Reset audioPlaying state when audio ends
-        setAudioPlaying(false);
+        setAudioPlaying(true);
     };
 
     return (
