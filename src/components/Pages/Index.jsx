@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import Message1 from '../Modals/Message1';
-import audio1 from '../../assets/audio2.mp3'; // import your audio file
 
 const Index = () => {
     const [showMessage1, setShowMessage1] = useState(false);
     const [audioPlaying, setAudioPlaying] = useState(false);
+    const [muted, setMuted] = useState(true);
 
     const handleButtonClick = () => {
         // Show the message modal
         setShowMessage1(true);
         // Play the audio
         setAudioPlaying(true);
+        setMuted(false)
     };
 
     const handleAudioEnded = () => {
         // Reset audioPlaying state when audio ends
-        setAudioPlaying(true);
+        setAudioPlaying(false);
     };
 
     return (
@@ -23,7 +24,6 @@ const Index = () => {
             <button onClick={handleButtonClick} className='text-black px-2 py-2 bg-gray-300 rounded-md font-bold'>Click Me</button>
             {showMessage1 && <Message1 />}
             {/* Audio player */}
-            <audio src={audio1} autoPlay={audioPlaying} onEnded={handleAudioEnded} />
         </div>
     );
 };

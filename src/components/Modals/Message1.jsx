@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import message_data from './message';
+import audio1 from '../../assets/audio2.mp3'; // import your audio file
+
 const Message1 = () => {
   const [index, setIndex] = useState(0);
   const message = message_data[index];
@@ -16,6 +18,12 @@ const Message1 = () => {
     setIndex(index - 1);
     }
   };
+
+  const [audioPlaying, setAudioPlaying] = useState(false);
+  const [muted, setMuted] = useState(true);
+
+ 
+ 
 
 
   return (
@@ -37,7 +45,8 @@ const Message1 = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 ">
+            <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse justify-center items-center sm:px-6 ">
+
               <button
                 type="button"
                 onClick={handleNext}
@@ -52,6 +61,8 @@ const Message1 = () => {
               >
                 Prev
               </button>
+            <audio src={audio1} controls autoPlay />
+
             
             </div>
           </div>
