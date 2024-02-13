@@ -18,7 +18,7 @@ const message_data = [
   {
     "date": "HAPPY VALENTINE'S DAY! ❤️❤️❤️",
     "image": rose, // Assign the imported image directly
-    "message": "Pasensya na kung ito lang muna ang kaya kong ibigay para sayo. Sana magustuhan mo."
+    "message": "Pasensya na kung ito lang muna ang kaya kong ibigay para sayo. Favor lang, dahan dahan lang sa pag next, try mo din na alalahanin lahat 😊 ..  Play mo ang music if hindi naka play hehe.. Sana magustuhan mo."
   },
   {
     "date": "July 12, 2022",

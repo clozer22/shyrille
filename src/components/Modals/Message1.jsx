@@ -1,29 +1,33 @@
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import message_data from './message';
 import audio1 from '../../assets/audio2.mp3'; // import your audio file
+import Confetti from 'react-confetti';
 
 const Message1 = () => {
   const [index, setIndex] = useState(0);
   const message = message_data[index];
-
+  const [isExploding, setIsExploding] = useState(false);
 
   const handleNext = () => {
-    // Increment the index to show the next message
-    if(index < message_data.length - 1)
-    setIndex(index + 1);
+    if (index < message_data.length - 1) {
+      setIndex(index + 1);
+    } else {
+      setIsExploding(true);
+      setTimeout(() => setIsExploding(false), 20000);
+    }
+
   };
   const handlePrev = () => {
-    // Increment the index to show the next message
-    if(index !== 0){
-    setIndex(index - 1);
+    if (index !== 0) {
+      setIndex(index - 1);
     }
   };
 
   const [audioPlaying, setAudioPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
 
- 
- 
+
+
 
 
   return (
@@ -35,7 +39,9 @@ const Message1 = () => {
             <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 ">
               <div className="sm:flex sm:items-start w-full">
                 <div className="mx-auto flex h-[20rem] sm:h-auto  object-cover object-center bg-center bg-cover flex-shrink-0 items-center justify-center overflow-hidden bg-red-100 sm:mx-0">
-                  <img src={message.image} className='sm:h-[10rem] bg-cover object-cover object-center ' alt="" />
+                  <Suspense fallback={<p>Loading...</p>}>
+                    <img src={message.image} className='sm:h-[10rem] bg-cover object-cover object-center ' alt="" />
+                  </Suspense>
                 </div>
                 <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                   <h3 className="text-base font-black leading-6 text-gray-900" id="modal-title">{message.date}</h3>
@@ -61,9 +67,14 @@ const Message1 = () => {
               >
                 Prev
               </button>
-            <audio src={audio1} controls autoPlay />
+              <audio className='w-full' src={audio1} controls autoPlay loop />
+              {isExploding && (
+                <Confetti
+                  width={window.innerWidth}
+                  height={window.innerHeight}
+                />
+              )}
 
-            
             </div>
           </div>
         </div>
