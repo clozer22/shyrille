@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Index />} />
       </Routes>
-      <audio src={video} autoPlay loop muted />
+      <audio src={video} autoPlay loop />
 
     </Router>
      
