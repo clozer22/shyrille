@@ -1,24 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import Index from './components/Pages/Index';
+import video from './assets/audio2.mp3'
+import Particles from './components/Particles';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Particles id="tsparticles" />
+      <Routes>
+        <Route path='/' element={<Index />} />
+      </Routes>
+      <audio src={video} autoPlay loop />
+
+    </Router>
+     
   );
 }
 
